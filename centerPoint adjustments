@@ -1,0 +1,31 @@
+# retrieves the center points.
+    backwards_cluster_center_points = _np.array(cluster_data[2])
+    cluster_center_points = []
+
+    # re aligns the points (they were in y,x order prior to this)
+    for point in backwards_cluster_center_points:
+        temp_point = (_np.round(point[1]), _np.round(point[0]))
+        cluster_center_points.append(temp_point)
+        # print(point[1], " ", point[0])
+
+    # calculates the mid point from the source image
+    source_x = len(source_image[0])
+    source_y = len(source_image)
+    mid_point = ((source_x / 2), (source_y / 2))
+
+    # applies a filter to find an object more closely aligned to what the user wants.
+    the_best_point = filter_most_center(cluster_center_points, mid_point)
+
+    # adjusts the_best_point for the monitor resolution
+    adjusted_x = (the_best_point[0] + start_point[0])
+    adjusted_y = (the_best_point[1] + start_point[1])
+
+    # DEBUG: best_point + screen start point.
+    # print("not adjusted:  ", the_best_point[0], " ", the_best_point[1])
+    # print("adjusted:  ", adjusted_x, " ", adjusted_y)
+
+    # moves mouse to the point
+    pyautogui.moveTo(adjusted_x, adjusted_y)
+
+    # returns the center location of found object.
+    adjusted_point = (adjusted_x, adjusted_y)

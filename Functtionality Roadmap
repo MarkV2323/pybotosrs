@@ -1,0 +1,30 @@
+Settings for OSRS rune-lite client to have prior to running the bot.
+
+1: Game Window must be smallest natural static size.
+2: Zoom must be 2nd zoom tick.
+3: Brightness maxed.
+
+If true: Game Window (Where to search) will be 807 x 533 roughly
+
+Icon static (still a prediction) locations.
+--------------------------------------------
+Melee:		546,212
+Inventory:	647,212
+Prayer:		711,212
+Magic:		745,212
+			
+Orb_Run		571,152
+			
+Logout		647,512
+
+Goal: Build some functionality for handling the game window. This functionality should include the following:
+[X]
+1: User Accepted Window Coordinates & Size (add in tip for size should be 807 x 533 and display gameWindow)
+
+[ ]
+2: Static icon lookup method: This should load in all icon locations for the rest of the script to use.
+(find_color in general area)
+
+[ ]
+3: Create appLoop for handling real time window setting / feedback for user,
+create skeleton option for choosing script to launch.
